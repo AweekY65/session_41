@@ -1,0 +1,62 @@
+VERSION ""
+
+NS_ :
+	NS_DESC_
+	CM_
+	BA_DEF_
+	BA_
+	VAL_
+	CAT_DEF_
+	CAT_
+	FILTER
+	BA_DEF_DEF_
+	EV_DATA_
+	ENVVAR_DATA_
+	SGTYPE_
+	SGTYPE_VAL_
+	BA_DEF_SGTYPE_
+	BA_SGTYPE_
+	SIG_TYPE_REF_
+	VAL_TABLE_
+	SIG_GROUP_
+	SIG_VALTYPE_
+	SIGTYPE_VALTYPE_
+	BO_TX_BU_
+	BA_DEF_REL_
+	BA_REL_
+	BA_DEF_DEF_REL_
+	BU_SG_REL_
+	BU_EV_REL_
+	BU_BO_REL_
+	SG_MUL_VAL_
+
+BS_:
+
+BU_: ECU_Engine ECU_Body Tester
+
+BO_ 256 EngineData: 8 ECU_Engine
+ SG_ EngineSpeed : 0|16@1+ (0.25,0) [0|16383.75] "rpm" ECU_Body,Tester
+ SG_ EngineTemp : 16|8@1- (1,-40) [-40|87] "degC" ECU_Body,Tester
+ SG_ ThrottlePos : 24|16@1+ (0.1,0) [0|100] "%" Tester
+ SG_ OdometerLarge : 40|16@1+ (1,0) [0|65535] "km" Tester
+ SG_ CheckEngine : 56|1@1+ (1,0) [0|1] "" Tester
+
+BO_ 257 BodyStatus: 8 ECU_Body
+ SG_ VehicleSpeed : 7|16@0+ (0.01,0) [0|655.35] "km/h" ECU_Engine,Tester
+ SG_ SteeringAngle : 23|16@0- (0.1,0) [-3276.8|3276.7] "deg" Tester
+ SG_ GearLever : 39|4@0+ (1,0) [0|15] "" Tester
+ SG_ HighBeam : 32|1@1+ (1,0) [0|1] "" Tester
+
+BO_ 258 DiagnosticMessage: 8 Tester
+ SG_ ServiceMode M : 0|4@1+ (1,0) [0|15] "" ECU_Engine,ECU_Body
+ SG_ Voltage m0 : 8|16@1+ (0.001,0) [0|65.535] "V" ECU_Engine
+ SG_ Current m0 : 24|16@1+ (0.001,-32.768) [-32.768|32.767] "A" ECU_Engine
+ SG_ Pressure m1 : 23|16@0+ (0.01,0) [0|655.35] "kPa" ECU_Body
+ SG_ PumpRpm m1 : 39|16@0+ (1,0) [0|65535] "rpm" ECU_Body
+ SG_ ErrorCode m2 : 8|12@1+ (1,0) [0|4095] "" ECU_Engine
+
+BO_ 2387092543 ExtendedExample: 4 Tester
+ SG_ Counter : 0|8@1+ (1,0) [0|255] "" ECU_Engine
+ SG_ BigEndian16 : 23|16@0+ (1,0) [0|65535] "" ECU_Engine
+
+CM_ BO_ 256 "Periodic engine status, 100 ms";

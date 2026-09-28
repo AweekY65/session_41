@@ -1,0 +1,7 @@
+# The core tool uses the Python 3 standard library only.
+#
+# cantools is used solely as an independent reference oracle by
+# tests/test_cantools_crosscheck.py. The test self-skips when it is absent,
+# so installing it is optional:
+#
+#   pip install cantools

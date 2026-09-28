@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "local-can-dbc-tool"
+version = "1.0.0"
+description = "Local, offline DBC signal encoder/decoder for CAN frames (no bus, no network)"
+requires-python = ">=3.8"
+dependencies = []
+
+[project.optional-dependencies]
+test = ["cantools"]
+
+[project.scripts]
+can-tool = "can_tool.cli:main"
+
+[tool.setuptools]
+packages = ["can_tool"]
